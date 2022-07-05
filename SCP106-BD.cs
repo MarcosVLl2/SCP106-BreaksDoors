@@ -21,8 +21,10 @@ namespace SCP106_BD
         {
             Log.Debug("Thank you for using my plugin! Any suggestions or bugfixes contact \"nombre_original#8857\"");
             Singleton = this;
-            Eventhandler = new EventHandlers();
-            Eventhandler.currentSCP106 = rememberSCP106;
+            Eventhandler = new EventHandlers
+            {
+                currentSCP106 = rememberSCP106
+            };
             RegisterEvents();
             base.OnEnabled();
         }

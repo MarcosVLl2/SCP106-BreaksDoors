@@ -9,6 +9,7 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Description = SCP106-BreaksDoors
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{383BE7EA-2B39-455F-B7E7-31AB325B94A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

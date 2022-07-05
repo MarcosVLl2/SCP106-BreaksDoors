@@ -7,8 +7,8 @@
     <ProjectGuid>{383BE7EA-2B39-455F-B7E7-31AB325B94A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Plugin</RootNamespace>
-    <AssemblyName>Plugin</AssemblyName>
+    <RootNamespace>SCP106_BD</RootNamespace>
+    <AssemblyName>SCP106_BD</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

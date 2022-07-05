@@ -10,14 +10,14 @@ namespace SCP106_BD
 
     internal sealed class EventHandlers
     {
-        private static CoroutineHandle[] handles = new CoroutineHandle[] { };
-        private static Config config = SCP106_BD.Singleton.Config;
+        private static readonly CoroutineHandle[] handles = new CoroutineHandle[] { };
+        private static readonly Config config = SCP106_BD.Singleton.Config;
         public Player currentSCP106 = null;
         public void OnRoundStarted()
         {
             Timing.RunCoroutine(DetectSCP106(), "DetectSCP106");
         }
-        public void OnRoundEnded(RoundEndedEventArgs ev)
+        public void OnRoundEnded(RoundEndedEventArgs _)
         {
             Timing.KillCoroutines(handles);
         }
