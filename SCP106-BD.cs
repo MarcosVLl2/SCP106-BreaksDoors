@@ -12,11 +12,6 @@ namespace SCP106_BD
         public static SCP106_BD Singleton { get; private set; }
         private EventHandlers Eventhandler { get; set; }
         private static Player rememberSCP106 { get; set; } = null;
-
-        public SCP106_BD()
-        {
-            
-        }
         public override void OnEnabled()
         {
             Log.Debug("Thank you for using my plugin! Any suggestions or bugfixes contact \"nombre_original#8857\"");
