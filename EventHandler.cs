@@ -1,4 +1,4 @@
-﻿using System;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using Exiled.API.Features;
 using Exiled.API.Interfaces;
@@ -12,13 +12,26 @@ namespace SCP106_BD
     {
         private static readonly CoroutineHandle[] handles = new CoroutineHandle[] { };
         private static readonly Config config = SCP106_BD.Singleton.Config;
+        private List<Door> doorsToBreak = new List<Door>();
+        public EventHandlers()
+        {
+
+        }
         public Player currentSCP106 = null;
         public void OnRoundStarted()
         {
+            foreach (Door door in Door.List)
+            {
+                if (!config.ImmuneDoors.Exists(x => x == door.Type))
+                {
+                    doorsToBreak.Add(door);
+                }
+            }
             Timing.RunCoroutine(DetectSCP106(), "DetectSCP106");
         }
         public void OnRoundEnded(RoundEndedEventArgs _)
         {
+            doorsToBreak.Clear();
             Timing.KillCoroutines(handles);
         }
         public void OnDied(DiedEventArgs ev)
@@ -75,14 +88,14 @@ namespace SCP106_BD
         {
             while (!currentSCP106.IsDead)
             {
-                foreach (Door door in Door.List)
+                foreach (Door door in doorsToBreak)
                 {
-                    if (UnityEngine.Vector3.Distance(currentSCP106.Position, door.Position) <= 0.5F)
+                    if (Vector3.Distance(currentSCP106.Position, new Vector3(door.Position.x, door.Position.y + 0.5F, door.Position.z)) <= 2F)
                     {
                         door.BreakDoor();
                     }
                 }
-                yield return Timing.WaitForSeconds(0.05F);
+                yield return Timing.WaitForSeconds(config.Time_Per_Doors_check);
             }
         }
     }
